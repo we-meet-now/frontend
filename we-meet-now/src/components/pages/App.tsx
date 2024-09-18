@@ -1,13 +1,15 @@
-import React from "react";
-import "../../styles/App.css";
-import MapPage from "./map";
+import React from 'react'
+import '../../styles/App.css'
+import MapPage from './map'
+import { GlobalStyle } from '../../styles/global-style'
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <GlobalStyle />
       <MapPage />
-    </div>
-  );
+    </>
+  )
 }
 
-export default App;
+export default App
