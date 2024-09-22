@@ -21,6 +21,7 @@ const MapPage = () => {
   }, []);
 
   return <div id="map" className="w-[500px] h-[400px]"></div>;
+      <div id="map" className="w-full h-screen"></div>
 };
 
 export default MapPage;
