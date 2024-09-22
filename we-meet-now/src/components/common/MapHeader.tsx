@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchIcon from "../../assets/SearchIcon";
 import ListIcon from "../../assets/ListIcon";
 import MapIcon from "../../assets/MapIcon";
+import * as S from "../../styles/common/MapHeader";
 
 interface Props {
   onClickSearchButton: (searchValue: string) => void;
@@ -12,34 +13,27 @@ const MapHeader = ({ rightButton, onClickSearchButton }: Props) => {
   const [searchValue, setSearchValue] = useState<string>("");
 
   return (
-    <section className="flex w-full p-3 bg-pink-50 gap-2 items-center">
-      <button
-        className="bg-white border border-solid border-[#A4A4A4] p-2 w-12 h-12 flex justify-center items-center"
-        onClick={rightButton.onClick}
-      >
+    <section className="z-10 fixed top-0 left-0 flex w-full p-3 gap-2 items-center">
+      <S.HeaderButton onClick={rightButton.onClick}>
         {rightButton.type === "list" ? (
-          <div className="flex flex-col items-center justify-center">
+          <div className="icon-container">
             <ListIcon width="46" />
-            <span className="text-xs text-[#7997EC]">목록</span>
+            <span>목록</span>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center">
+          <div className="icon-container">
             <MapIcon width="36" height="26" />
-            <span className="text-xs text-[#7997EC]">지도</span>
+            <span>지도</span>
           </div>
         )}
-      </button>
-      <input
-        className="bg-white border border-solid border-[#A4A4A4] rounded-[20px] p-2 h-12 flex-grow"
+      </S.HeaderButton>
+      <S.HeaderInput
         value={searchValue}
         onChange={(event) => setSearchValue(event.target.value)}
       />
-      <button
-        className="bg-white border border-solid border-[#A4A4A4] p-2 w-12 h-12 flex justify-center items-center"
-        onClick={() => onClickSearchButton(searchValue)}
-      >
+      <S.HeaderButton onClick={() => onClickSearchButton(searchValue)}>
         <SearchIcon width="24" height="24" />
-      </button>
+      </S.HeaderButton>
     </section>
   );
 };
