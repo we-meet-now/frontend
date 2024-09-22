@@ -17,7 +17,7 @@ const MapHeader = ({ rightButton, onClickSearchButton }: Props) => {
       <S.HeaderButton onClick={rightButton.onClick}>
         {rightButton.type === "list" ? (
           <div className="icon-container">
-            <ListIcon width="46" />
+            <ListIcon width="36" />
             <span>목록</span>
           </div>
         ) : (
