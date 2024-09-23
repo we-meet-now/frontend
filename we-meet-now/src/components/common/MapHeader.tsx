@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SearchIcon from "../../assets/SearchIcon";
 import ListIcon from "../../assets/ListIcon";
 import MapIcon from "../../assets/MapIcon";
@@ -13,7 +13,7 @@ const MapHeader = ({ rightButton, onClickSearchButton }: Props) => {
   const [searchValue, setSearchValue] = useState<string>("");
 
   return (
-    <section className="z-10 fixed top-0 left-0 flex w-full p-3 gap-2 items-center">
+    <section className="fixed top-0 left-0 z-10 flex items-center w-full gap-2 p-3">
       <S.HeaderButton onClick={rightButton.onClick}>
         {rightButton.type === "list" ? (
           <div className="icon-container">
