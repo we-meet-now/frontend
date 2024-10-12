@@ -1,6 +1,7 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
-import MapHeader from "../../../common/MapHeader";
 import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Place } from "../../../../types/kakao";
+import MapHeader from "../../../common/MapHeader";
 import * as S from "../../../../styles/PlaceList";
 
 declare global {
@@ -13,22 +14,7 @@ const PlaceList = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchValue = searchParams.get("search");
-  const [places, setPlaces] = useState<
-    {
-      address_name: string;
-      category_group_code: string;
-      category_group_name: string;
-      category_name: string;
-      distance: string;
-      id: string;
-      phone: string;
-      place_name: string;
-      place_url: string;
-      road_address_name: string;
-      x: string;
-      y: string;
-    }[]
-  >([]);
+  const [places, setPlaces] = useState<Place[]>([]);
   var ps = new window.kakao.maps.services.Places();
 
   const search = (searchValue: string) => {
