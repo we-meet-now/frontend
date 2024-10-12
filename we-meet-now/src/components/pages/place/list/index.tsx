@@ -50,9 +50,7 @@ const PlaceList = () => {
       <MapHeader rightButtonType={"map"} onClickSearchButton={search} />
       <S.PlaceList>
         {searchValue === null ? (
-          <div className="w-full flex justify-center">
-            검색어를 입력해주세요.
-          </div>
+          <div className="empty-container">검색어를 입력해주세요.</div>
         ) : (
           places.map((place) => (
             <li>

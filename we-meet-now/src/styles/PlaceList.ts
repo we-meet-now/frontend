@@ -5,6 +5,10 @@ export const PlaceList = styled.ul`
   ${tw`w-full p-2 gap-2 mt-20 overflow-auto`}
   height: calc(100dvh - 5rem);
 
+  div.empty-container {
+    ${tw`w-full flex justify-center`}
+  }
+
   > li {
     ${tw`flex flex-col mb-2`}
 
