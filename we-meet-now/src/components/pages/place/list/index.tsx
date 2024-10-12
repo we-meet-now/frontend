@@ -18,12 +18,7 @@ const PlaceList = () => {
   var ps = new window.kakao.maps.services.Places();
 
   const search = (searchValue: string) => {
-    // 검색 로직
     navigate(`/place/list?search=${searchValue}`);
-  };
-
-  const changeView = () => {
-    // 페이지 전환 로직
   };
 
   const searchPlaces = () => {
@@ -52,26 +47,26 @@ const PlaceList = () => {
 
   return (
     <>
-      <MapHeader
-        rightButton={{
-          type: "list",
-          onClick: () => changeView(),
-        }}
-        onClickSearchButton={search}
-      />
+      <MapHeader rightButtonType={"map"} onClickSearchButton={search} />
       <S.PlaceList>
-        {places.map((place) => (
-          <li>
-            <div className="title">
-              <div>{place.place_name}</div>
-              <div>{place.category_group_name}</div>
-            </div>
-            <div className="sub-information">
-              <div>{place.address_name}</div>
-              <div>{place.phone}</div>
-            </div>
-          </li>
-        ))}
+        {searchValue === null ? (
+          <div className="w-full flex justify-center">
+            검색어를 입력해주세요.
+          </div>
+        ) : (
+          places.map((place) => (
+            <li>
+              <div className="title">
+                <div>{place.place_name}</div>
+                <div>{place.category_group_name}</div>
+              </div>
+              <div className="sub-information">
+                <div>{place.address_name}</div>
+                <div>{place.phone}</div>
+              </div>
+            </li>
+          ))
+        )}
       </S.PlaceList>
     </>
   );
