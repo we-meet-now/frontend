@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MapHeader from "../../common/MapHeader";
 
 declare global {
@@ -8,7 +9,9 @@ declare global {
 }
 
 const MapPage = () => {
+  const navigate = useNavigate();
   const [map, setMap] = useState(null);
+
   useEffect(() => {
     if (window.kakao) {
       const container = document.getElementById("map");
@@ -23,6 +26,7 @@ const MapPage = () => {
 
   const search = (searchValue: string) => {
     // 검색 로직
+    navigate(`/place/list?search=${searchValue}`);
   };
 
   const changeView = () => {
