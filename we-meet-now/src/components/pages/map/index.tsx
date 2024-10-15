@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MapHeader from "../../common/MapHeader";
 
 declare global {
@@ -8,7 +9,9 @@ declare global {
 }
 
 const MapPage = () => {
+  const navigate = useNavigate();
   const [map, setMap] = useState(null);
+
   useEffect(() => {
     if (window.kakao) {
       const container = document.getElementById("map");
@@ -22,22 +25,12 @@ const MapPage = () => {
   }, []);
 
   const search = (searchValue: string) => {
-    // 검색 로직
-  };
-
-  const changeView = () => {
-    // 페이지 전환 로직
+    navigate(`/place/list?search=${searchValue}`);
   };
 
   return (
     <>
-      <MapHeader
-        rightButton={{
-          type: "list",
-          onClick: () => changeView(),
-        }}
-        onClickSearchButton={search}
-      />
+      <MapHeader rightButtonType={"list"} onClickSearchButton={search} />
       <div id="map" className="w-full h-screen"></div>
     </>
   );
