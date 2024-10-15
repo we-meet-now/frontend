@@ -44,14 +44,18 @@ const PlaceList = () => {
   };
 
   useEffect(() => {
-    searchPlaces();
+    if (searchValue) {
+      searchPlaces();
+    } else {
+      setPlaces([]);
+    }
   }, [searchValue]);
 
   return (
     <>
       <MapHeader rightButtonType={"map"} onClickSearchButton={search} />
       <S.PlaceList>
-        {searchValue === null ? (
+        {searchValue === null || searchValue === "" ? (
           <div className="empty-container">검색어를 입력해주세요.</div>
         ) : (
           places.map((place) => (
