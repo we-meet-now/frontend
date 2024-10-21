@@ -51,6 +51,11 @@ const PlaceList = () => {
     }
   }, [searchValue]);
 
+  const handlePlace = (place: Place) => {
+    //props 로 데이터를 넘기지만 선택한 장소에 대한 상태관리는 필요할듯...
+    navigate(`/place/detail/${place.id}`, { state: { place } });
+  };
+
   return (
     <>
       <MapHeader rightButtonType={"map"} onClickSearchButton={search} />
@@ -59,7 +64,7 @@ const PlaceList = () => {
           <div className="empty-container">검색어를 입력해주세요.</div>
         ) : (
           places.map((place) => (
-            <li>
+            <li key={place.id} onClick={() => handlePlace(place)}>
               <div className="title">
                 <div>{place.place_name}</div>
                 <div>{place.category_group_name}</div>
