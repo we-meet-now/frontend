@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MapHeader from "../../common/MapHeader";
+import MapFooter from "../../common/MapFooter";
 
 declare global {
   interface Window {
@@ -32,6 +33,7 @@ const MapPage = () => {
     <>
       <MapHeader rightButtonType={"list"} onClickSearchButton={search} />
       <div id="map" className="w-full h-screen"></div>
+      <MapFooter />
     </>
   );
 };
